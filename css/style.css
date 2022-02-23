@@ -1,0 +1,12 @@
+header.header {
+    background-color: #003053;
+}
+
+.brand-img {
+    width: 110px;
+}
+
+.brand-wrap {
+    width: 100%;
+    justify-content: center;
+}
