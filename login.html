@@ -25,21 +25,26 @@
     <section id="content" class="content">
         <div class="content__boxed w-100 min-vh-100 d-flex flex-column align-items-center justify-content-center">
             <div class="content__wrap">
-                <div class="card shadow-lg" style="padding: 3rem 7rem;">
+                <div class="card shadow-lg" style="padding: 3rem 5rem;">
                     <div class="card-body">
                         <div class="text-center">
-                            <h1 class="h3">OCA GLOBAL</h1>
-                            <p>Ingrese a su cuenta</p>
+                            <h1 class="h4">Plataforma de Gestión de Activos</h1>
+                            <p class="fs-5">OCA GLOBAL</p>
                         </div>
-                        <form class="mt-6" action="dashboard.html">
+                        <form class="mt-6" style="padding: 0 2rem;" action="dashboard.html">
                             <div class="dropdown mb-3">
-                                <a class="btn btn-secondary dropdown-toggle w-100" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                                <a class="btn btn-secondary dropdown-toggle w-100" href="#" role="button" id="ddlEmpresa"
+                                   data-bs-toggle="dropdown" aria-expanded="false">
                                     Empresa
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                    <li><a class="dropdown-item" href="#">Empresa 1</a></li>
-                                    <li><a class="dropdown-item" href="#">Empresa 2</a></li>
-                                    <li><a class="dropdown-item" href="#">Empresa 3</a></li>
+                                    <li><a class="dropdown-item" href="#">ANTAMINA</a></li>
+                                    <li><a class="dropdown-item" href="#">BUENAVENTURA</a></li>
+                                    <li><a class="dropdown-item" href="#">MINSUR</a></li>
+                                    <li><a class="dropdown-item" href="#">ANTAPACCAY</a></li>
+                                    <li><a class="dropdown-item" href="#">LAS BAMBAS</a></li>
+                                    <li><a class="dropdown-item" href="#">CERRO VERDE</a></li>
+                                    <li><a class="dropdown-item" href="#">PANAMERICAN SILVER</a></li>
                                 </ul>
                             </div>
                             <div class="mb-3">
@@ -70,7 +75,15 @@
 </div>
 <!-- Popper JS [ OPTIONAL ] -->
 <script src="./assets/vendors/popperjs/popper.min.js" defer></script>
+<script src="assets/js/jquery-3.6.0.min.js"></script>
 <!-- Bootstrap JS [ OPTIONAL ] -->
 <script src="./assets/vendors/bootstrap/bootstrap.min.js" defer></script>
+<script>
+    $(document).ready(function () {
+        $(".dropdown-item").on("click", function () {
+            $("#ddlEmpresa").html($(this).html());
+        });
+    });
+</script>
 </body>
 </html>
