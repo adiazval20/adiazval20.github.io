@@ -29,22 +29,81 @@
             <div class="content__wrap pt-3 pb-4">
                 <div class="row">
                     <div class="col-sm-12 reportes d-flex justify-content-start flex-wrap">
-                        <div class="card mb-4" style="width: 20%;">
-                            <h5 class="card-header">Condición de Equipos</h5>
+                        <div class="card mb-4" style="width: 30%;">
+                            <h5 class="card-header">Condición de equipos</h5>
                             <div class="card-body text-center d-flex flex-column justify-content-center">
                                 <canvas id="doughnut" style="height: 320px;"></canvas>
                             </div>
                         </div>
-                        <div class="card mb-4 ms-5" style="width: 50%;">
+                        <div class="card mb-4" style="width: 67%; margin-left: 3%">
                             <h5 class="card-header">Benchmark</h5>
                             <div class="card-body text-center d-flex flex-column justify-content-end">
                                 <canvas id="bar" style="height: 320px;"></canvas>
                             </div>
                         </div>
-                        <div class="card mb-4" style="width: 50%">
-                            <h5 class="card-header">Principales Diagnósticos</h5>
+                        <div class="card mb-4" style="width: 45%">
+                            <h5 class="card-header">Principales diagnósticos</h5>
                             <div class="card-body text-center d-flex flex-column justify-content-end">
                                 <canvas id="horizontalBar" style="height: 280px;"></canvas>
+                            </div>
+                        </div>
+                        <div class="card mb-4" style="width: 52%; margin-left: 3%">
+                            <h5 class="card-header">Principales activos en observación</h5>
+                            <div class="card-body text-center d-flex flex-column justify-content-start">
+                                <table class="table table-sm" style="font-size: 0.65rem;">
+                                    <thead>
+                                    <th>Planta</th>
+                                    <th>Sub Área</th>
+                                    <th>Equipo</th>
+                                    <th>UT Equipo</th>
+                                    <th>Descripción Equipo</th>
+                                    <th>Componente</th>
+                                    <th>Código SAP Componente</th>
+                                    <th>Criticidad</th>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td>PLANTA 1</td>
+                                        <td>CHANCADO PRIMARIO</td>
+                                        <td>FAJA TRANSPORTADORA #08</td>
+                                        <td>2101-PL1-CHAN-CHAP-FAJ0008</td>
+                                        <td>FAJA TRANSPORTADORA 42"X86M #01</td>
+                                        <td>REDUCTOR VELOCIDAD</td>
+                                        <td>800009046</td>
+                                        <td>4</td>
+                                    </tr>
+                                    <tr>
+                                        <td>PLANTA 1</td>
+                                        <td>CHANCADO PRIMARIO</td>
+                                        <td>FAJA TRANSPORTADORA #08</td>
+                                        <td>2101-PL1-CHAN-CHAP-FAJ0008</td>
+                                        <td>FAJA TRANSPORTADORA 42"X86M #01</td>
+                                        <td>POLEA COLA</td>
+                                        <td>800009040</td>
+                                        <td>4</td>
+                                    </tr>
+                                    <tr>
+                                        <td>PLANTA 1</td>
+                                        <td>CHANCADO SECUNDARIO</td>
+                                        <td>CHANCADORA SECUNDARIA #01</td>
+                                        <td>2101-PL1-CHAN-CHAS-CHA0001</td>
+                                        <td>CHANCADORA CONICA SANDVIK H6800 #02</td>
+                                        <td>MOTOR ELECTRICO</td>
+                                        <td>800011750</td>
+                                        <td>4</td>
+                                    </tr>
+                                    <tr>
+                                        <td>PLANTA 1</td>
+                                        <td>CHANCADO SECUNDARIO</td>
+                                        <td>CHANCADORA SECUNDARIA #01</td>
+                                        <td>2101-PL1-CHAN-CHAS-CHA0001</td>
+                                        <td>CHANCADORA CONICA SANDVIK H6800 #02</td>
+                                        <td>MOTOR ELECTRICO</td>
+                                        <td>-</td>
+                                        <td>4</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
@@ -125,7 +184,7 @@
                                 <a href="./dashboard2.html" class="nav-link active">Indicadores de Gestión</a>
                             </li>
                             <li class="nav-item">
-                                <a href="#" class="nav-link">Repuestos</a>
+                                <a href="#" class="nav-link">Principales Repuestos</a>
                             </li>
                         </ul>
                     </li>
