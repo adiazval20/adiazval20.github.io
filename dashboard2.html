@@ -22,7 +22,24 @@
     <section id="content" class="content">
         <div class="content__header content__boxed overlapping">
             <div class="content__wrap pt-3 pb-4">
-                <iframe src="map.html" frameborder="0" width="100%" height="850px"></iframe>
+                <div class="row">
+                    <div class="col-sm-3">
+                        <div class="card">
+                            <h5 class="card-header">Condición de Equipos</h5>
+                            <div class="card-body text-center">
+                                <canvas id="doughnut"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="card">
+                            <h5 class="card-header">Activos en Alarma x Criticalidad</h5>
+                            <div class="card-body text-center">
+                                <canvas id="bar"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -93,10 +110,10 @@
                         </a>
                         <ul class="mininav-content nav collapse show">
                             <li class="nav-item">
-                                <a href="./dashboard.html" class="nav-link active">Dashboard</a>
+                                <a href="./dashboard.html" class="nav-link">Dashboard</a>
                             </li>
                             <li class="nav-item">
-                                <a href="./dashboard2.html" class="nav-link">Dashboard 2</a>
+                                <a href="./dashboard2.html" class="nav-link active">Dashboard 2</a>
                             </li>
                         </ul>
                     </li>
@@ -109,6 +126,9 @@
                             <li class="nav-item">
                                 <a href="usuarios.html" class="nav-link">Usuarios</a>
                             </li>
+                            <!--                            <li class="nav-item">-->
+                            <!--                                <a href="#" class="nav-link">Empresas</a>-->
+                            <!--                            </li>-->
                         </ul>
                     </li>
                 </ul>
@@ -122,5 +142,65 @@
 <script src="./assets/vendors/bootstrap/bootstrap.min.js" defer></script>
 <!-- Nifty JS [ OPTIONAL ] -->
 <script src="./assets/js/nifty.min.js" defer></script>
+<script src="assets/js/jquery-3.6.0.min.js"></script>
+<script src="assets/vendors/chart.js/chart.min.js"></script>
+<script>
+    $(document).ready(function () {
+        const doughnutCtx = $('#doughnut');
+        const doughnutData = {
+            labels: [
+                'Crítico',
+                'Observación',
+                'Normal'
+            ],
+            datasets: [{
+                label: 'Condición de Equipos Críticos',
+                data: [300, 50, 100],
+                backgroundColor: [
+                    'rgb(223, 86, 69)',
+                    'rgb(37,71,106)',
+                    'rgb(139,195,74)'
+                ],
+                hoverOffset: 4
+            }]
+        };
+        const doughnutConfig = {
+            type: 'doughnut',
+            responsive: true,
+            data: doughnutData,
+        };
+        const doughnutChart = new Chart(doughnutCtx, doughnutConfig);
+
+        const barCtx = $('#bar');
+        const labels = ["Alerta", "Alarma"];
+        const barData = {
+            labels: labels,
+            datasets: [{
+                label: 'Alerta',
+                data: [30, 15],
+                backgroundColor: 'rgba(223, 86, 69)',
+                borderWidth: 1
+            }, {
+                label: 'Benchmark',
+                data: [5, 3],
+                backgroundColor: 'rgba(37,71,106)',
+                borderWidth: 1
+            }]
+        };
+        const barConfig = {
+            type: 'bar',
+            responsive: true,
+            data: barData,
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            },
+        };
+        const barChart = new Chart(barCtx, barConfig);
+    });
+</script>
 </body>
 </html>
