@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>.:: Dashboard ::.</title>
+    <title>.:: Indicadores de Gestión ::.</title>
     <!-- Fonts [ OPTIONAL ] -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,6 +16,11 @@
     <!-- Nifty Demo Icons [ OPTIONAL ] -->
     <link rel="stylesheet" href="./assets/css/demo-purpose/demo-icons.min.css">
     <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        .reportes .card {
+        }
+    </style>
 </head>
 <body class="in-out-back">
 <div id="root" class="root mn--max">
@@ -23,19 +28,23 @@
         <div class="content__header content__boxed overlapping">
             <div class="content__wrap pt-3 pb-4">
                 <div class="row">
-                    <div class="col-sm-3">
-                        <div class="card">
+                    <div class="col-sm-12 reportes d-flex justify-content-start flex-wrap">
+                        <div class="card mb-4" style="width: 20%;">
                             <h5 class="card-header">Condición de Equipos</h5>
-                            <div class="card-body text-center">
-                                <canvas id="doughnut"></canvas>
+                            <div class="card-body text-center d-flex flex-column justify-content-center">
+                                <canvas id="doughnut" style="height: 320px;"></canvas>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-sm-6">
-                        <div class="card">
-                            <h5 class="card-header">Activos en Alarma x Criticalidad</h5>
-                            <div class="card-body text-center">
-                                <canvas id="bar"></canvas>
+                        <div class="card mb-4 ms-5" style="width: 50%;">
+                            <h5 class="card-header">Benchmark</h5>
+                            <div class="card-body text-center d-flex flex-column justify-content-end">
+                                <canvas id="bar" style="height: 320px;"></canvas>
+                            </div>
+                        </div>
+                        <div class="card mb-4" style="width: 50%">
+                            <h5 class="card-header">Principales Diagnósticos</h5>
+                            <div class="card-body text-center d-flex flex-column justify-content-end">
+                                <canvas id="horizontalBar" style="height: 280px;"></canvas>
                             </div>
                         </div>
                     </div>
@@ -47,7 +56,7 @@
         <div class="header__inner">
             <div class="header__brand">
                 <div class="brand-wrap">
-                    <a href="./index.html" class="brand-img stretched-link">
+                    <a href="./dashboard.html" class="brand-img stretched-link">
                         <img src="img/logo.png" alt="Logo" class="Nifty logo">
                     </a>
                 </div>
@@ -69,7 +78,7 @@
                                     <img class="img-sm rounded-circle" src="./img/user.png" alt="Profile Picture" loading="lazy">
                                 </div>
                                 <div class="flex-grow-1 ms-3">
-                                    <h5 class="mb-0">Juan Perez</h5>
+                                    <h5 class="mb-0">Hernán Pozo</h5>
                                     <span class="text-muted fst-italic">juan.perez@empresa.com</span>
                                 </div>
                             </div>
@@ -94,7 +103,7 @@
                             <button class="d-block btn shadow-none p-2" data-bs-toggle="collapse" data-bs-target="#usernav" aria-expanded="false"
                                     aria-controls="usernav">
                                     <span class="dropdown-toggle d-flex justify-content-center align-items-center">
-                                        <h6 class="mb-0 me-2">Juan Perez</h6>
+                                        <h6 class="mb-0 me-2">Hernán Pozo</h6>
                                     </span>
                                 <small class="text-muted">Administrador</small>
                             </button>
@@ -110,10 +119,13 @@
                         </a>
                         <ul class="mininav-content nav collapse show">
                             <li class="nav-item">
-                                <a href="./dashboard.html" class="nav-link">Dashboard</a>
+                                <a href="./dashboard.html" class="nav-link">Unidades</a>
                             </li>
                             <li class="nav-item">
-                                <a href="./dashboard2.html" class="nav-link active">Dashboard 2</a>
+                                <a href="./dashboard2.html" class="nav-link active">Indicadores de Gestión</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">Repuestos</a>
                             </li>
                         </ul>
                     </li>
@@ -126,9 +138,6 @@
                             <li class="nav-item">
                                 <a href="usuarios.html" class="nav-link">Usuarios</a>
                             </li>
-                            <!--                            <li class="nav-item">-->
-                            <!--                                <a href="#" class="nav-link">Empresas</a>-->
-                            <!--                            </li>-->
                         </ul>
                     </li>
                 </ul>
@@ -168,13 +177,17 @@
             type: 'doughnut',
             responsive: true,
             data: doughnutData,
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+            }
         };
         const doughnutChart = new Chart(doughnutCtx, doughnutConfig);
 
         const barCtx = $('#bar');
-        const labels = ["Alerta", "Alarma"];
+        const barLabels = ["Alerta", "Alarma"];
         const barData = {
-            labels: labels,
+            labels: barLabels,
             datasets: [{
                 label: 'Alerta',
                 data: [30, 15],
@@ -196,10 +209,50 @@
                     y: {
                         beginAtZero: true
                     }
-                }
+                },
+                responsive: true,
+                maintainAspectRatio: false,
             },
         };
         const barChart = new Chart(barCtx, barConfig);
+
+
+        const horizontalBarCtx = $('#horizontalBar');
+        const horizontalBarLabels = ["Rodamiento", "Fuga Mecánica", "Desbalance", "Lubricación"];
+        const horizontalBarData = {
+            labels: horizontalBarLabels,
+            datasets: [{
+                axis: 'y',
+                label: 'Diagnósticos',
+                data: [95, 85, 80, 73],
+                fill: false,
+                backgroundColor: [
+                    'rgb(255, 99, 132)',
+                    'rgb(255, 159, 64)',
+                    'rgb(255, 205, 86)',
+                    'rgb(75, 192, 192)',
+                ],
+            }]
+        };
+        const horizontalBarConfig = {
+            type: 'bar',
+            data: horizontalBarData,
+            options: {
+                indexAxis: 'y',
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false,
+                        labels: {
+                            color: 'rgb(75, 192, 192)',
+                        }
+                    }
+                }
+            }
+        };
+        const horizontalBarChart = new Chart(horizontalBarCtx, horizontalBarConfig);
+
     });
 </script>
 </body>
