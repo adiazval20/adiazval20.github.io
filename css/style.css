@@ -10,3 +10,38 @@ header.header {
     width: 100%;
     justify-content: center;
 }
+
+.mainnav__inner {
+    background-color: #DE473C !important;
+}
+
+.mainnav__inner :where(h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6):not(.mainnav__caption) {
+    color: #f2f2f2 !important;
+}
+
+.mainnav__caption {
+    color: #f5a19b!important;
+}
+
+.mainnav__inner .dropdown-toggle:after {
+    color: #fff !important;
+}
+.mainnav__inner .text-muted {
+    color: #f5a19b!important;
+}
+
+.nav:not(.nav-pills) .nav-link .nav-icon, .nav:not(.nav-pills) .nav-link i {
+    color: #f2f2f2 !important;
+}
+
+.nav-label {
+    color: #f2f2f2 !important;
+}
+
+.mainnav__inner .nav-link {
+    color: #f2f2f2 !important;
+}
+
+.bg-blue {
+    background-color: #003053 !important;
+}
