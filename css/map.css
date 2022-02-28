@@ -19,7 +19,7 @@
 	font-style: normal;
 	font-weight: normal;
 	src: url('../fonts/Glober-SemiBold.woff') format('woff'),
-	     url('../fonts/Glober-SemiBold.ttf') format('truetype');
+	     url('../fonts/Glober-SemiBold.otf') format('truetype');
 }
 @font-face {
 	font-family: 'Glober';
