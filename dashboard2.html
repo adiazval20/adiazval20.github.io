@@ -280,19 +280,21 @@
 
 
         const horizontalBarCtx = $('#horizontalBar');
-        const horizontalBarLabels = ["Rodamiento", "Fuga Mecánica", "Desbalance", "Lubricación"];
+        const horizontalBarLabels = ["Déficit de Lubricación", "Desalineamiento", "Desbalance", "Falla de Rodamiento", "Soltura mecánica", "Problemas Electricos"];
         const horizontalBarData = {
             labels: horizontalBarLabels,
             datasets: [{
                 axis: 'y',
                 label: 'Diagnósticos',
-                data: [95, 85, 80, 73],
+                data: [60, 15, 10, 5, 5, 5],
                 fill: false,
                 backgroundColor: [
                     'rgb(255, 99, 132)',
                     'rgb(255, 159, 64)',
                     'rgb(255, 205, 86)',
                     'rgb(75, 192, 192)',
+                    'rgb(134,75,192)',
+                    'rgb(100,192,75)',
                 ],
             }]
         };
@@ -303,11 +305,22 @@
                 indexAxis: 'y',
                 responsive: true,
                 maintainAspectRatio: false,
+                x: {
+                    suggestedMin: 0,
+                    suggestedMax: 80
+                },
                 plugins: {
                     legend: {
                         display: false,
                         labels: {
                             color: 'rgb(75, 192, 192)',
+                        }
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                return `${context.raw}%`;
+                            }
                         }
                     }
                 }
