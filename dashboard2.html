@@ -18,7 +18,8 @@
     <link rel="stylesheet" href="css/style.css">
 
     <style>
-        .reportes .card {
+        #horizontalBar {
+            cursor: pointer;
         }
     </style>
 </head>
@@ -280,6 +281,9 @@
 
 
         const horizontalBarCtx = $('#horizontalBar');
+        horizontalBarCtx.on("click", function () {
+            location.href="detalle-condicion2.html"
+        });
         const horizontalBarLabels = ["Déficit de Lubricación", "Desalineamiento", "Desbalance", "Falla de Rodamiento", "Soltura mecánica", "Problemas Electricos"];
         const horizontalBarData = {
             labels: horizontalBarLabels,
